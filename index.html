@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart City Weather Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🌆 Smart City Weather Dashboard</h1>
+        <p>Real-time Weather Monitoring System</p>
+    </header>
+
+    <section class="search-section">
+        <input type="text" id="cityInput" placeholder="Enter City Name (e.g., Pune)">
+        <button id="searchBtn">Search</button>
+    </section>
+
+    <section class="status">
+        <div id="loading" class="hidden">Loading weather data...</div>
+        <div id="error" class="hidden"></div>
+    </section>
+
+    <section class="weather-container hidden" id="weatherContainer">
+        <div class="weather-card">
+            <h2 id="cityName"></h2>
+            <p class="temperature" id="temperature"></p>
+            <p id="weatherDescription"></p>
+            <div class="details">
+                <div>
+                    <span>🌬 Wind Speed</span>
+                    <p id="windSpeed"></p>
+                </div>
+                <div>
+                    <span>💧 Humidity</span>
+                    <p id="humidity"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Smart City Weather Dashboard | College Mini Project</p>
+    </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
