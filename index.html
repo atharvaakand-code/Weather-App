@@ -3,48 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Smart City Weather Dashboard</title>
+    <!-- SEO Best Practices -->
+    <meta name="description" content="A premium Smart City Weather Dashboard providing real-time weather monitoring, searching, sorting, and filtering using modern JavaScript.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <h1>🌆 Smart City Weather Dashboard</h1>
-        <p>Real-time Weather Monitoring System</p>
+        <div class="header-content">
+            <h1>🌆 Smart City Weather Dashboard</h1>
+            <p>Real-time Weather Monitoring System</p>
+        </div>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
     </header>
 
-    <section class="search-section">
-        <input type="text" id="cityInput" placeholder="Enter City Name (e.g., Pune)">
-        <button id="searchBtn">Search</button>
-    </section>
-
-    <section class="status">
-        <div id="loading" class="hidden">Loading weather data...</div>
-        <div id="error" class="hidden"></div>
-    </section>
-
-    <section class="weather-container hidden" id="weatherContainer">
-        <div class="weather-card">
-            <h2 id="cityName"></h2>
-            <p class="temperature" id="temperature"></p>
-            <p id="weatherDescription"></p>
-            <div class="details">
-                <div>
-                    <span>🌬 Wind Speed</span>
-                    <p id="windSpeed"></p>
-                </div>
-                <div>
-                    <span>💧 Humidity</span>
-                    <p id="humidity"></p>
-                </div>
+    <main class="dashboard">
+        <!-- Controls Panel for Searching, Sorting, Filtering -->
+        <section class="controls-panel">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search cities (e.g. Pune)...">
             </div>
-        </div>
-    </section>
+            
+            <div class="filters-box">
+                <select id="sortSelect" aria-label="Sort Cities">
+                    <option value="default">Sort By: Default</option>
+                    <option value="nameAsc">Name (A-Z)</option>
+                    <option value="nameDesc">Name (Z-A)</option>
+                    <option value="tempAsc">Temperature (Low to High)</option>
+                    <option value="tempDesc">Temperature (High to Low)</option>
+                </select>
+
+                <select id="filterSelect" aria-label="Filter Cities">
+                    <option value="all">Filter By: All</option>
+                    <option value="hot">Hot (> 30°C)</option>
+                    <option value="mild">Mild (20°C - 30°C)</option>
+                    <option value="cold">Cold (&lt; 20°C)</option>
+                    <option value="favorites">Favorites Only ❤️</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Status display -->
+        <section class="status">
+            <div id="loadingIndicator" class="loader hidden"></div>
+            <div id="statusMessage" class="status-message"></div>
+        </section>
+
+        <!-- Grid for multiple weather cards -->
+        <section class="weather-grid" id="weatherGrid">
+            <!-- Cards will be injected dynamically via JS -->
+        </section>
+    </main>
 
     <footer>
-        <p>© 2026 Smart City Weather Dashboard | College Mini Project</p>
+        <p>© 2026 Smart City Weather Dashboard | Built for Milestone 3 & 4</p>
     </footer>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
