@@ -3,11 +3,11 @@
 // Using OpenWeatherMap API
 // ======================================
 
-const API_KEY = "a2e3320d35f4430fa8b182855260104";  // Keep your actual API key for dev
+const API_KEY = "bd5e378503939ddaee76f12ad7a97608";  // Keep your actual API key for dev
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 const DEFAULT_CITIES = [
-    "Pune", "Mumbai", "Delhi", "Bangalore", 
+    "Pune", "Mumbai", "Delhi", "Bangalore",
     "Chennai", "Kolkata", "Hyderabad", "Ahmedabad"
 ];
 
@@ -54,15 +54,15 @@ themeToggle.addEventListener("click", () => {
 // -------- Fetch Initial Data --------
 async function fetchAllWeather() {
     showLoading(true);
-    
+
     try {
         // Use map() to create an array of promises
         const promises = DEFAULT_CITIES.map(city => fetchWeatherData(city));
         const results = await Promise.all(promises);
-        
+
         // Filter out any failed requests
         weatherData = results.filter(data => data !== null);
-        
+
         if (weatherData.length === 0) {
             showStatus("Failed to load weather data. Please try later.");
         } else {
@@ -125,7 +125,7 @@ function applyProcessors() {
     const sortValue = sortSelect.value;
 
     // 1. SEARCH (using Array.filter)
-    let processedData = weatherData.filter(item => 
+    let processedData = weatherData.filter(item =>
         item.name.toLowerCase().includes(searchTerm)
     );
 
@@ -168,7 +168,7 @@ function renderCards(dataArray) {
     // MAP using to convert data array to HTML elements and append
     dataArray.map(data => {
         const isFav = currentFavorites.includes(data.id);
-        
+
         const card = document.createElement("div");
         card.className = "weather-card";
         card.innerHTML = `
@@ -197,7 +197,7 @@ function renderCards(dataArray) {
 }
 
 // -------- Button Interaction (Favorites) --------
-window.toggleFavorite = function(cityId) {
+window.toggleFavorite = function (cityId) {
     if (currentFavorites.includes(cityId)) {
         // Remove from favorites using Array HOF filter
         currentFavorites = currentFavorites.filter(id => id !== cityId);
@@ -205,10 +205,10 @@ window.toggleFavorite = function(cityId) {
         // Add to favorites
         currentFavorites.push(cityId);
     }
-    
+
     // Save to Local Storage
     localStorage.setItem("weatherFavorites", JSON.stringify(currentFavorites));
-    
+
     // Re-render
     applyProcessors();
 };
